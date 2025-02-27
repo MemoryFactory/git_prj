@@ -3,7 +3,7 @@ github="origin"
 gitee="gitee"
 branch=$(git rev-parse --abbrev-ref HEAD)
 
-echo ": Do you commit all of your modifications? (y/n)"
+echo ": Do you commit all of your modifications (y/[n])?"
 read -p "> " answer
 if [ "$answer" != "y" || "$answer" != "yes" ]; then
 	exit 0
