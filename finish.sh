@@ -17,7 +17,7 @@ if [ "$branch" != "main" ]; then
 fi
 #2. merge dev
 if git rev-parse --quiet --verify dev; then
-	git merge dev
+	git merge --no-ff dev
 fi
 #3. push new files online
 while ! git push $github main; do
