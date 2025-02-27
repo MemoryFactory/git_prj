@@ -2,12 +2,12 @@
 Contain some shell scripts
 
 List:
-    > try-pull.sh
-    > try-push.sh
-    > easy-log.sh
-    > all-push.sh
-    > start.sh
-    > finish.sh
+    - try-pull.sh
+    - try-push.sh
+    - easy-log.sh
+    - all-push.sh
+    - start.sh
+    - finish.sh
 
 Usage:
     > ./try-pull.sh [option]
@@ -15,7 +15,7 @@ Usage:
 
         > ./try-pull.sh
         : Attempt to pull files from origin(github default)
-       > ./try-pull.sh all
+        > ./try-pull.sh all
         : Attempt to pull files from github and then gitee
         > ./try-pull.sh github
         : Attempt to pull files from github only
