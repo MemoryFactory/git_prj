@@ -31,7 +31,7 @@ fi
 #2. merge dev
 if git rev-parse --quiet --verify dev; then
 	echo "> git merge --no-ff dev"
-	git merge --no-ff dev -m "merge branch 'dev'"
+	git merge --no-ff dev -m "Merge branch 'dev'"
 fi
 #3. push new files online
 echo "> git push $github main"
