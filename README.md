@@ -70,11 +70,34 @@ Contain some shell scripts
 
 *Attemp to push files to github and gitee as same as ./try-push.sh all*
 
-### <span id="start">`./start.sh`</span>
+### <span id="start">`./start.sh [option]`</span>
 
 *Pull new modification from github and gitee, and switch to branch 'dev' before working*
 
-### <span id="finish">`./finish.sh`</span>
+> `./start.sh`
+>
+> *Create working enviroment, pulling new files from github and gitee*
+>
+> `./start.sh github`
+>
+> *Create working enviroment, pulling new files from github only*
+>
+> `./start.sh gitee`
+>
+> *Create working enviroment, pulling new files from gitee only*
+
+### <span id="finish">`./finish.sh [option]`</span>
 
 *Merge modifications to branch 'main', and then push them to github and gitee*
 
+> `./finish.sh`
+>
+> *Have all things done, and push modifications to github and gitee*
+>
+> `./finish.sh github`
+>
+> *Have all things done, and push modifications to github only*
+>
+> `./finish.sh gitee`
+>
+> *Have all things done, and push modifications to gitee only*
