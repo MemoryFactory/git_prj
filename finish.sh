@@ -22,6 +22,12 @@ else
 	echo "> "
 fi
 
+if [ x$1 != x ]; then
+	para1=$1
+else
+	para1=""
+fi
+
 echo ": Finish all your job!" 
 #1. switch to main
 if [ "$branch" != "main" ]; then
@@ -34,15 +40,29 @@ if git rev-parse --quiet --verify dev; then
 	git merge --no-ff dev -m "Merge branch 'dev'"
 fi
 #3. push new files online
-echo "> git push $github main"
-while ! git push $github main; do
-	echo ": Push $github failed, retrying in 5 seconds..."
-	sleep 5
-done
-echo "> git push $gitee main"
-while ! git push $gitee main; do
-	echo ": Push $gitee failed, retrying in 5 seconds..."
-	sleep 5
-done
+if [ "$para1" == "github" ]; then
+	echo "> git push $github main"
+	while ! git push $github main; do
+		echo ": Push $github failed, retrying in 5 seconds..."
+		sleep 5
+	done
+elif [ "$para1" == "gitee" ]; then
+	echo "> git push $gitee main"
+	while ! git push $gitee main; do
+		echo ": Push $gitee failed, retrying in 5 seconds..."
+		sleep 5
+	done
+else
+	echo "> git push $github main"
+	while ! git push $github main; do
+		echo ": Push $github failed, retrying in 5 seconds..."
+		sleep 5
+	done
+	echo "> git push $gitee main"
+	while ! git push $gitee main; do
+		echo ": Push $gitee failed, retrying in 5 seconds..."
+		sleep 5
+	done
+fi
 
 echo ": Everything has been done"
