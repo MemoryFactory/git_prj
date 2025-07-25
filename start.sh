@@ -9,47 +9,47 @@ else
 	para1=""
 fi
 
-echo ": Start a great day!"
+echo -e "\e[32m: Start a great day!\e[0m"
 #1. switch to main
 if [ "$branch" != "main" ]; then
-	echo "> git switch main"
+	echo -e "\e[34m> git switch main\e[0m"
 	git switch main
 fi
 #2. pull new files online
 if [ "$para1" == "github" ]; then
-	echo "> git pull $github main"
+	echo -e "\e[34m> git pull $github main\e[0m"
 	while ! git pull $github main; do
-		echo ": Pull $github failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $github failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
 elif [ "$para1" == "gitee" ]; then
-	echo "> git pull $gitee main"
+	echo -e "\e[34m> git pull $gitee main\e[0m"
 	while ! git pull $gitee main; do
-		echo ": Pull $gitee failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $gitee failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
 else
-	echo "> git pull $github main"
+	echo -e "\e[34m> git pull $github main\e[0m"
 	while ! git pull $github main; do
-		echo ": Pull $github failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $github failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
-	echo "> git pull $gitee main"
+	echo -e "\e[34m> git pull $gitee main\e[0m"
 	while ! git pull $gitee main; do
-		echo ": Pull $gitee failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $gitee failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
 fi
 #3. switch to dev
 if git rev-parse --quiet --verify dev; then
-	echo "> git switch dev"
+	echo -e "\e[34m> git switch dev\e[0m"
 	git switch dev
 else
-	echo "> git switch -c dev"
+	echo -e "\e[34m> git switch -c dev\e[0m"
 	git switch -c dev
 fi
 #4. merge main
-echo "> git merge main"
+echo -e "\e[34m> git merge main\e[0m"
 git merge main
 
-echo ": Working enviroment is prepared"
+echo -e "\e[32m: Working enviroment is prepared\e[0m"

@@ -28,41 +28,41 @@ else
 	para1=""
 fi
 
-echo ": Finish all your job!" 
+echo -e "\e[32m: Finish all your job!\e[0m" 
 #1. switch to main
 if [ "$branch" != "main" ]; then
-	echo "> git switch main"
+	echo -e "\e[34m> git switch main\e[0m"
 	git switch main
 fi
 #2. merge dev
 if git rev-parse --quiet --verify dev; then
-	echo "> git merge --no-ff dev"
+	echo -e "\e[34m> git merge --no-ff dev\e[0m"
 	git merge --no-ff dev -m "Merge branch 'dev'"
 fi
 #3. push new files online
 if [ "$para1" == "github" ]; then
-	echo "> git push $github main"
+	echo -e "\e[34m> git push $github main\e[0m"
 	while ! git push $github main; do
-		echo ": Push $github failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Push $github failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
 elif [ "$para1" == "gitee" ]; then
-	echo "> git push $gitee main"
+	echo -e "\e[34m> git push $gitee main\e[0m"
 	while ! git push $gitee main; do
-		echo ": Push $gitee failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Push $gitee failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
 else
-	echo "> git push $github main"
+	echo -e "\e[34m> git push $github main\e[0m"
 	while ! git push $github main; do
-		echo ": Push $github failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Push $github failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
-	echo "> git push $gitee main"
+	echo -e "\e[34m> git push $gitee main\e[0m"
 	while ! git push $gitee main; do
-		echo ": Push $gitee failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Push $gitee failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
 fi
 
-echo ": Everything has been done"
+echo -e "\e[32m: Everything has been done\e[0m"
