@@ -9,34 +9,34 @@ else
 	para1=""
 fi
 
-echo ": Start pulling..."
+echo -e "\e[32m: Start pulling...\e[0m"
 if [ "$para1" == "all" ]; then
-	echo "> git pull $github $branch"
+	echo -e "\e[34m> git pull $github $branch\e[0m"
 	while ! git pull $github $branch; do
-		echo ": Pull $github failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $github failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
-	echo ": Pull $github successful"
-	echo "> git pull $gitee $branch"
+	echo -e "\e[32m: Pull $github successful\e[0m"
+	echo -e "\e[34m> git pull $gitee $branch\e[0m"
 	while ! git pull $gitee $branch; do
-		echo ": Pull $gitee failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $gitee failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
-	echo ": Pull $gitee successful"
+	echo -e "\e[32m: Pull $gitee successful\e[0m"
 elif [ "$para1" == "$github" ]; then
-	echo "> git pull $github $branch"
+	echo -e "\e[34m> git pull $github $branch\e[0m"
 	while ! git pull $github $branch; do
-		echo ": Pull $github failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $github failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
-	echo ": Pull $github successful"
+	echo -e "\e[32m: Pull $github successful\e[0m"
 elif [ "$para1" == "$gitee" ]; then
-	echo "> git pull $gitee $branch"
+	echo -e "\e[34m> git pull $gitee $branch\e[0m"
 	while ! git pull $gitee $branch; do
-		echo ": Pull $gitee failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull $gitee failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
-	echo ": Pull $gitee successful"
+	echo -e "\e[32m: Pull $gitee successful\e[0m"
 elif [ "$para1" == "-h" ]; then
 	echo "Usage: try-pull.sh [REMOTE]"
 	echo ""
@@ -47,10 +47,10 @@ elif [ "$para1" == "-h" ]; then
 	echo "  gitee: pull gitee only"
 	echo "  -h: help message"
 else
-	echo "> git pull"
+	echo -e "\e[34m> git pull\e[0m"
 	while ! git pull; do
-		echo ": Pull failed, retrying in 5 seconds..."
+		echo -e "\e[31m: Pull failed, retrying in 5 seconds...\e[0m"
 		sleep 5
 	done
 fi
-echo ": Mission accomplish"
+echo -e "\e[32m: Mission accomplish\e[0m"
